@@ -1,0 +1,6 @@
+#!/bin/sh
+
+makafsp="־ "
+makaf="־"
+
+sed "s/$makafsp/$makaf/g"

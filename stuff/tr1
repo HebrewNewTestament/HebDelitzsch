@@ -1,0 +1,5 @@
+#!/bin/sh
+
+vo1="וֹ"
+
+sed "s/$vo1/VOVOVO/g"

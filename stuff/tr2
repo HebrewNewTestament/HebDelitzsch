@@ -1,0 +1,6 @@
+#!/bin/sh
+
+vo1="וֹ"
+vavhh="וֺ"
+
+sed "s/$vavhh/$vo1/g"
