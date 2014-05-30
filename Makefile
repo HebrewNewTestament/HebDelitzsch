@@ -1,4 +1,4 @@
-INST=/home/didi/home/sword/inst
+INST=$(HOME)/private/home/sword/inst
 
 all: r/modules/texts/ztext/HebDlz1885/nt.bzs
 
