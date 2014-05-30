@@ -4,6 +4,7 @@ all: r/modules/texts/ztext/HebDlz1885/nt.bzs
 
 r/modules/texts/ztext/HebDlz1885/nt.bzs: HebDlz1885.osis
 	osis2mod r/modules/texts/ztext/HebDlz1885 HebDlz1885.osis -z
+	chmod -R g+rX,o+rX r
 
 zip:
 	zip -r ../HebDlz1885-`date +%Y-%m-%d`.zip .
