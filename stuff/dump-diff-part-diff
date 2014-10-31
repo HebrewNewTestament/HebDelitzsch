@@ -1,0 +1,17 @@
+#!/bin/bash
+
+old=
+new=
+
+while read -r line; do
+	case "$line" in
+		-*)
+			old="$old
+$line";;
+		+*)
+			new="$new
+$line";;
+	esac
+done
+
+diff -ub <(echo "$old" | dump-utf8.py) <(echo "$new" | dump-utf8.py)
