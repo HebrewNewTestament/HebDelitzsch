@@ -1,17 +1,16 @@
-INST=$(HOME)/private/home/sword/inst
+INST=inst
 
-all: r/modules/texts/ztext/HebStrNeg2003/nt.bzs
+all: $(INST)/modules/texts/ztext/HebStrNeg2003/nt.bzs
 
-r/modules/texts/ztext/HebStrNeg2003/nt.bzs: HebStrNeg2003.osis
-	osis2mod r/modules/texts/ztext/HebStrNeg2003 HebStrNeg2003.osis -z
-	chmod -R g+rX,o+rX r
+$(INST)/modules/texts/ztext/HebStrNeg2003/nt.bzs: HebStrNeg2003.osis
+	mkdir -p $(INST)/mods.d $(INST)/modules/texts/ztext/HebStrNeg2003
+	osis2mod $(INST)/modules/texts/ztext/HebStrNeg2003 HebStrNeg2003.osis -z
+	cp -a *.conf $(INST)/mods.d
+	chmod -R g+rX,o+rX $(INST)
 
-zip:
-	zip -r ../HebStrNeg2003-`date +%Y-%m-%d`.zip .
-	cd r; zip -r ../../HebStrNeg2003-`date +%Y-%m-%d`-installable.zip .
+zip: all
+	zip -r HebStrNeg2003-`date +%Y-%m-%d`.zip *.conf *.osis Makefile stuff TODO
+	cd $(INST); zip -r ../HebStrNeg2003-`date +%Y-%m-%d`-installable.zip .
 
-install:
-	mkdir -p $(INST)/r/mods.d $(INST)/r/modules/texts/ztext/HebStrNeg2003
-	cp -a Makefile *.osis $(INST)
-	cp -a *.conf $(INST)/r/mods.d
-	make -C $(INST)
+clean:
+	rm -rf $(INST) *.zip
