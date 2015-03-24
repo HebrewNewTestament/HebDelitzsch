@@ -19,5 +19,5 @@ process_tpl() {
 mkdir -p "${INST}/mods.d" "${INST}/modules/texts/ztext/${NAME}" "${TMP}"
 process_tpl "${BASE}" "${TMP}/${NAME}.osis"
 osis2mod "${INST}/modules/texts/ztext/${NAME}" "${TMP}/${NAME}.osis" -z
-process_tpl base.conf "${INST}/mods.d/${NAME}.osis"
+process_tpl base.conf "${INST}/mods.d/${NAME}.conf"
 
