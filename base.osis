@@ -2,12 +2,12 @@
 
 <osis xmlns="http://www.bibletechnologies.net/2003/OSIS/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bibletechnologies.net/2003/OSIS/namespace http://www.bibletechnologies.net/osisCore.2.1.1.xsd">
 
-<osisText osisIDWork="HebStrNeg2003" osisRefWork="defaultReferenceScheme" xml:lang="he">
+<osisText osisIDWork="@NAME@" osisRefWork="defaultReferenceScheme" xml:lang="he">
 
 	<header>
-		<work osisWork="HebStrNeg2003">
+		<work osisWork="@NAME@">
 			<title>Hebrew Bible 2003</title>
-			<identifier type="OSIS">Bible.HebStrNeg2003</identifier>
+			<identifier type="OSIS">Bible.@NAME@</identifier>
 			<refSystem>Bible.KJV</refSystem>
 		</work>
 		<work osisWork="defaultReferenceScheme">

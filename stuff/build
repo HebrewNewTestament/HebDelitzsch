@@ -1,0 +1,23 @@
+#!/bin/sh
+
+INST="$1"
+NAME="$2"
+DESC="$3"
+BASE="$4"
+TMP="$5"
+
+process_tpl() {
+    inp="$1"
+    out="$2"
+
+    sed \
+	-e "s/@NAME@/${NAME}/g" \
+	-e "s/@DESC@/${DESC}/g" \
+	< "${inp}" > "${out}"
+}
+
+mkdir -p "${INST}/mods.d" "${INST}/modules/texts/ztext/${NAME}" "${TMP}"
+process_tpl "${BASE}" "${TMP}/${NAME}.osis"
+osis2mod "${INST}/modules/texts/ztext/${NAME}" "${TMP}/${NAME}.osis" -z
+process_tpl base.conf "${INST}/mods.d/${NAME}.osis"
+
