@@ -6,7 +6,7 @@
 
 	<header>
 		<work osisWork="@NAME@">
-			<title>Hebrew Bible 2003</title>
+			<title>Hebrew New Testament @DATE@ based on the Delitzsch translation from 1885 @DESC@</title>
 			<identifier type="OSIS">Bible.@NAME@</identifier>
 			<refSystem>Bible.KJV</refSystem>
 		</work>

@@ -6,6 +6,8 @@ DESC="$3"
 BASE="$4"
 TMP="$5"
 
+DATE="$(date +%Y-%m-%d)"
+
 process_tpl() {
     inp="$1"
     out="$2"
@@ -13,6 +15,7 @@ process_tpl() {
     sed \
 	-e "s/@NAME@/${NAME}/g" \
 	-e "s/@DESC@/${DESC}/g" \
+	-e "s/@DATE@/${DATE}/g" \
 	< "${inp}" > "${out}"
 }
 
