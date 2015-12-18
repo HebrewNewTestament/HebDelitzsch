@@ -1,6 +1,7 @@
 INST=inst
 TMP=tmp
 SRC=$(shell pwd -P)
+DATE=$(shell date +%Y-%m-%d)
 
 all: $(INST)/modules/texts/ztext/HebDelitzsch/nt.bzs $(INST)/modules/texts/ztext/HebDelitzschNN/nt.bzs
 	chmod -R g+rX,o+rX $(INST)
@@ -16,8 +17,15 @@ $(TMP)/basenn.osis: base.osis
 	stuff/remove-nikkud.py base.osis "$(TMP)"/basenn.osis
 
 zip: all osis-and-conf-zip
-	zip -r HebDelitzsch-src-$(shell date +%Y-%m-%d).zip *.conf *.osis Makefile stuff TODO
-	cd $(INST); zip -r $(SRC)/HebDelitzsch-modules-$(shell date +%Y-%m-%d).zip .; cd ..
+	zip -r HebDelitzsch-src-$(DATE).zip *.conf *.osis Makefile stuff TODO
+	for base in HebDelitzsch HebDelitzschNN; do \
+			cd "$(INST)"; \
+			zip -r \
+				$(SRC)/$${base}-module-$(DATE).zip \
+				mods.d/$${base}.conf \
+				modules/texts/ztext/$${base}; \
+			cd ..; \
+	done
 
 osis-and-conf-zip: all
 	mkdir -p "$(TMP)/osis-and-conf"
@@ -25,4 +33,4 @@ osis-and-conf-zip: all
 	cd "$(TMP)/osis-and-conf"; zip -r $(SRC)/HebDelitzsch-osis-and-conf-$(shell date +%Y-%m-%d).zip .
 
 clean:
-	rm -rf $(INST) $(TMP) *.zip
+	rm -rf $(INST) $(TMP) ./*.zip
